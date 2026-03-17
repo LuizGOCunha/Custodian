@@ -1,9 +1,12 @@
 import requests
+import os
 
 from gather_ips import get_external_ips
 from gather_processes import get_processes_by_ip
 
-API_KEY = ""
+API_KEY = os.environ.get("ABUSEIPDB_API_KEY")
+if API_KEY is None:
+    raise IndexError("Could not find Abuse IP db API KEY in the environment variables.")
 
 ips_to_check = get_external_ips()
 
