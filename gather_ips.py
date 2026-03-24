@@ -71,7 +71,7 @@ def find_active_interface():
         except Exception:
             continue
 
-    return None
+    raise LookupError("Unable to gather active interface.")
 
 
 def get_external_ips(duration: int = 30):
